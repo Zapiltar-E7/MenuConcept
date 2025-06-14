@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 ConfigFileHandler="*res://Menus/scripts/ConfigFileHandler.gd"
+MenuMusic="*res://Menus/scripts/menu_music.gd"
 
 [display]
 

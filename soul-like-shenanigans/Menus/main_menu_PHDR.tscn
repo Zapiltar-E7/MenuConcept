@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://6yocw0mwpx13"]
+[gd_scene load_steps=5 format=3 uid="uid://6yocw0mwpx13"]
 
 [ext_resource type="Script" path="res://Menus/scripts/main_menu_phdr.gd" id="1_gpwtt"]
+
+[sub_resource type="SystemFont" id="SystemFont_k0n8r"]
+font_names = PackedStringArray("Comic Sans MS")
+
+[sub_resource type="SystemFont" id="SystemFont_elquo"]
+font_names = PackedStringArray("Comic Sans MS")
+
+[sub_resource type="SystemFont" id="SystemFont_0ll33"]
+font_names = PackedStringArray("Comic Sans MS")
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -38,16 +47,19 @@ grow_vertical = 0
 
 [node name="New Game" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_k0n8r")
 theme_override_font_sizes/font_size = 75
 text = "New Game"
 
 [node name="System Settings" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_elquo")
 theme_override_font_sizes/font_size = 75
 text = "System Settings"
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_0ll33")
 theme_override_font_sizes/font_size = 75
 text = "Exit"
 

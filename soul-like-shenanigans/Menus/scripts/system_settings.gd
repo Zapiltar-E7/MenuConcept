@@ -5,7 +5,7 @@ extends Control
 @onready var window_resolution = $"PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Window Resolution"
 @onready var main_volume_slider = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume
 @onready var music_volume_slider = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume
-
+@onready var audio_player := preload("res://Menus/menu_music.tscn").instantiate()
 
 func _ready():
 	var video_settings = ConfigFileHandler.load_video_setting()
@@ -15,7 +15,7 @@ func _ready():
 	var audio_settings = ConfigFileHandler.load_audio_setting()
 	main_volume_slider.value = audio_settings.main_volume
 	music_volume_slider.value = audio_settings.music_volume
-
+	
 
 func _on_back_pressed():
 	get_tree().change_scene_to_file("res://Menus/main_menu_PHDR.tscn")
@@ -61,3 +61,7 @@ func _on_main_volume_drag_ended(value_changed):
 func _on_music_volume_drag_ended(value_changed):
 	if value_changed:
 		ConfigFileHandler.save_audio_setting("music_volume", music_volume_slider.value)
+
+
+
+	
