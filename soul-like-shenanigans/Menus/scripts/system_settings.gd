@@ -1,14 +1,20 @@
 extends Control
 
 
-# Called when the node enters the scene tree for the first time.
+@onready var fullscreen_mode = $"PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Screen Mode"
+@onready var window_resolution = $"PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Window Resolution"
+@onready var main_volume_slider = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume
+@onready var music_volume_slider = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume
+
+
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	var video_settings = ConfigFileHandler.load_video_setting()
+	fullscreen_mode.value = video_settings.fullscreen
+	window_resolution.value = video_settings.resolution
+	
+	var audio_settings = ConfigFileHandler.load_audio_setting()
+	main_volume_slider.value = min(audio_settings.main_volume, 1.0)
+	music_volume_slider.value = min(audio_settings.music_volume, 1.0)
 
 
 func _on_back_pressed():
@@ -17,3 +23,41 @@ func _on_back_pressed():
 
 func _on_keybinds_pressed():
 	get_tree().change_scene_to_file("res://Menus/keybinds.tscn")
+
+
+func _on_screen_mode_item_selected(index):
+	match index:
+		0:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+			ConfigFileHandler.save_video_setting("fullscreen", 0)
+		1:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			ConfigFileHandler.save_video_setting("fullscreen", 1)
+		2:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+			ConfigFileHandler.save_video_setting("fullscreen", 2)
+
+
+
+func _on_window_resolution_item_selected(index):
+	match index:
+		0:
+			DisplayServer.window_set_size(Vector2i(1920, 1080))
+			ConfigFileHandler.save_video_setting("resolution", 0)
+		1:
+			DisplayServer.window_set_size(Vector2i(1080, 720))
+			ConfigFileHandler.save_video_setting("resolution", 1)
+		2:
+			DisplayServer.window_set_size(Vector2i(640, 480))
+			ConfigFileHandler.save_video_setting("resolution", 2)
+
+
+
+func _on_main_volume_drag_ended(value_changed):
+	if value_changed:
+		ConfigFileHandler.save_audio_setting("Main Volume", main_volume_slider.value)
+
+
+func _on_music_volume_drag_ended(value_changed):
+	if value_changed:
+		ConfigFileHandler.save_audio_setting("Main Volume", music_volume_slider.value)
