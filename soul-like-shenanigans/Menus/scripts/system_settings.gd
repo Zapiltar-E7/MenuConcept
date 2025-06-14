@@ -9,12 +9,12 @@ extends Control
 
 func _ready():
 	var video_settings = ConfigFileHandler.load_video_setting()
-	fullscreen_mode.value = video_settings.fullscreen
-	window_resolution.value = video_settings.resolution
+	fullscreen_mode.selected = video_settings.fullscreen
+	window_resolution.selected = video_settings.resolution
 	
 	var audio_settings = ConfigFileHandler.load_audio_setting()
-	main_volume_slider.value = min(audio_settings.main_volume, 1.0)
-	music_volume_slider.value = min(audio_settings.music_volume, 1.0)
+	main_volume_slider.value = audio_settings.main_volume
+	music_volume_slider.value = audio_settings.music_volume
 
 
 func _on_back_pressed():
@@ -55,9 +55,9 @@ func _on_window_resolution_item_selected(index):
 
 func _on_main_volume_drag_ended(value_changed):
 	if value_changed:
-		ConfigFileHandler.save_audio_setting("Main Volume", main_volume_slider.value)
+		ConfigFileHandler.save_audio_setting("main_volume", main_volume_slider.value)
 
 
 func _on_music_volume_drag_ended(value_changed):
 	if value_changed:
-		ConfigFileHandler.save_audio_setting("Main Volume", music_volume_slider.value)
+		ConfigFileHandler.save_audio_setting("music_volume", music_volume_slider.value)
