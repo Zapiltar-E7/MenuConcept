@@ -11,11 +11,9 @@ func _process(delta):
 	pass
 
 
-func _on_new_game_pressed():
-	pass # Replace with function body.
+func _on_back_pressed():
+	get_tree().change_scene_to_file("res://Menus/main_menu_PHDR.tscn")
 
-func _on_system_settings_pressed():
-	get_tree().change_scene_to_file("res://Menus/system_settings.tscn")
 
-func _on_exit_pressed():
-	get_tree().quit()
+func _on_keybinds_pressed():
+	get_tree().change_scene_to_file("res://Menus/keybinds.tscn")

@@ -86,11 +86,8 @@ func _update_action_list(button, event):
 
 
 func _on_back_pressed():
-	get_tree().change_scene_to_file("res://Menus/main_menu_PHDR.tscn")
+	get_tree().change_scene_to_file("res://Menus/system_settings.tscn")
 	
-#func _input(event):
-#	if Input.is_key_pressed(KEY_ESCAPE):
-	#	get_tree().change_scene_to_file("res://Menus/main_menu_PHDR.tscn")
 
 
 func _on_reset_button_pressed():
