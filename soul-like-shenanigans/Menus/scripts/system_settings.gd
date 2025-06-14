@@ -6,6 +6,8 @@ extends Control
 @onready var main_volume_slider = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume
 @onready var music_volume_slider = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume
 @onready var audio_player := preload("res://Menus/menu_music.tscn").instantiate()
+var master = AudioServer.get_bus_index("Master")
+var music = AudioServer.get_bus_index("Music")
 
 func _ready():
 	var video_settings = ConfigFileHandler.load_video_setting()
@@ -64,4 +66,8 @@ func _on_music_volume_drag_ended(value_changed):
 
 
 
-	
+func _on_main_volume_value_changed(value):
+	AudioServer.set_bus_volume_db(master, linear_to_db(value))
+
+func _on_music_volume_value_changed(value):
+	AudioServer.set_bus_volume_db(music, linear_to_db(value))

@@ -139,6 +139,8 @@ text = "Keybinds"
 [connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Screen Mode" to="." method="_on_screen_mode_item_selected"]
 [connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Window Resolution" to="." method="_on_window_resolution_item_selected"]
 [connection signal="drag_ended" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume" to="." method="_on_main_volume_drag_ended"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume" to="." method="_on_main_volume_value_changed"]
 [connection signal="drag_ended" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume" to="." method="_on_music_volume_drag_ended"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume" to="." method="_on_music_volume_value_changed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Keybinds" to="." method="_on_keybinds_pressed"]

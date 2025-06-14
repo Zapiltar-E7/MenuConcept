@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnhgohoi5sbhw"]
+[gd_scene load_steps=3 format=3 uid="uid://cnhgohoi5sbhw"]
 
+[ext_resource type="AudioStream" uid="uid://drjbvjkttya7s" path="res://audio/menu music/fatalechoes.mp3" id="1_baofa"]
 [ext_resource type="Script" path="res://Menus/scripts/menu_music.gd" id="1_mqt5e"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_baofa")
+volume_db = -14.991
+bus = &"Music"
 script = ExtResource("1_mqt5e")
