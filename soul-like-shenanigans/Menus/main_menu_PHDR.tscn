@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://6yocw0mwpx13"]
+
+[ext_resource type="Script" path="res://Menus/scripts/main_menu_phdr.gd" id="1_gpwtt"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gpwtt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.658
+anchor_right = 0.5
+anchor_bottom = 0.658
+offset_left = -202.0
+offset_top = -341.14
+offset_right = 202.0
+offset_bottom = -0.140076
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="New Game" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "New Game"
+
+[node name="System" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "System"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Exit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 394.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 150
+text = "Placeholder Menu Screen"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/System" to="." method="_on_system_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
