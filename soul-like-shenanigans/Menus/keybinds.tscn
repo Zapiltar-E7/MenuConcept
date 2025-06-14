@@ -1,0 +1,82 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3ula0ymkyvam"]
+
+[ext_resource type="Script" path="res://Menus/scripts/keybinds_phdr.gd" id="1_gi1rp"]
+[ext_resource type="PackedScene" uid="uid://dqpd0kro067ie" path="res://Menus/keybind menu/input_button.tscn" id="2_xlcvk"]
+
+[node name="Keybinds" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gi1rp")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 205.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 150
+text = "Keybinds"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 2
+offset_left = 27.0
+offset_top = 940.0
+offset_right = 365.0
+offset_bottom = 1051.0
+theme_override_font_sizes/font_size = 75
+text = "Back"
+
+[node name="Reset Button" type="Button" parent="."]
+layout_mode = 2
+offset_left = 1548.0
+offset_top = 940.0
+offset_right = 1886.0
+offset_bottom = 1051.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 75
+text = "Reset"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -652.0
+offset_top = -295.0
+offset_right = 652.0
+offset_bottom = 295.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionList" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputButton" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("2_xlcvk")]
+layout_mode = 2
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Reset Button" to="." method="_on_reset_button_pressed"]
