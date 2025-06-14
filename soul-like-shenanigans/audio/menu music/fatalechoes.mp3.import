@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://drjbvjkttya7s"
+path="res://.godot/imported/fatalechoes.mp3-70a1a6802ce6277f9afac9a33ff0a149.mp3str"
+
+[deps]
+
+source_file="res://audio/menu music/fatalechoes.mp3"
+dest_files=["res://.godot/imported/fatalechoes.mp3-70a1a6802ce6277f9afac9a33ff0a149.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
