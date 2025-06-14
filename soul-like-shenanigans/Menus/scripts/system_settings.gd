@@ -18,7 +18,9 @@ func _ready():
 	main_volume_slider.value = audio_settings.main_volume
 	music_volume_slider.value = audio_settings.music_volume
 	
-
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().change_scene_to_file("res://Menus/main_menu_PHDR.tscn")
 func _on_back_pressed():
 	get_tree().change_scene_to_file("res://Menus/main_menu_PHDR.tscn")
 

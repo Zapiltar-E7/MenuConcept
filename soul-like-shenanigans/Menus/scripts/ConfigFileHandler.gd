@@ -18,6 +18,8 @@ func _ready():
 		config.set_value("keybinding", "block", "F")
 		config.set_value("keybinding", "cast_spell", "Q")
 		config.set_value("keybinding", "player_interact", "E")
+		config.set_value("keybinding", "inventory", "Tab")
+		config.set_value("keybinding", "pause", "Esc")
 		
 		config.set_value("video", "fullscreen", 0)
 		config.set_value("video", "resolution", 0)

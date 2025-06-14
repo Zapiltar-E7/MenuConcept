@@ -9,7 +9,10 @@ func _ready():
 func _process(delta):
 	pass
 
-
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()
+		
 func _on_new_game_pressed():
 	pass # Replace with function body.
 

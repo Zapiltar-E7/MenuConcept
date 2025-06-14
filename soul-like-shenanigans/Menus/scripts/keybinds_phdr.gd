@@ -22,7 +22,9 @@ var input_actions = {
 	"secondary_attack": "Left Hand",
 	"block": "Guard",
 	"cast_spell": "Cast",
-	"player_interact": "Interact"
+	"player_interact": "Interact",
+	"inventory": "Inventory",
+	"pause": "Pause"
 }
 
 
@@ -85,6 +87,8 @@ func _input(event):
 			remapping_button = null
 			
 			accept_event()
+	elif event.is_action_pressed("ui_cancel"):
+		get_tree().change_scene_to_file("res://Menus/system_settings.tscn")
 
 
 func _update_action_list(button, event):
