@@ -5,7 +5,6 @@ extends Control
 @onready var window_resolution = $"PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Window Resolution"
 @onready var main_volume_slider = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume
 @onready var music_volume_slider = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume
-@onready var audio_player := preload("res://Menus/menu_music.tscn").instantiate()
 var master = AudioServer.get_bus_index("Master")
 var music = AudioServer.get_bus_index("Music")
 
