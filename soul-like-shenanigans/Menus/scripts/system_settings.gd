@@ -17,6 +17,11 @@ func _ready():
 	main_volume_slider.value = audio_settings.main_volume
 	music_volume_slider.value = audio_settings.music_volume
 	
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		%"System Settings".visible = false
+		%"Start Screen".visible = true
+	
 func _on_back_pressed():
 	%"Start Screen".visible = true
 	%"System Settings".visible = false
@@ -24,14 +29,17 @@ func _on_back_pressed():
 func _on_video_settings_button_pressed():
 	%"Video Settings Container".visible = true
 	%"Audio Settings Container".visible = false
+	%Keybinds.visible = false
 
 func _on_audio_settings_button_pressed():
 	%"Video Settings Container".visible = false
 	%"Audio Settings Container".visible = true
+	%Keybinds.visible = false
 
 func _on_keybinds_pressed():
-	%"System Settings".visible = false
 	%Keybinds.visible = true
+	%"Video Settings Container".visible = false
+	%"Audio Settings Container".visible = false
 
 
 func _on_screen_mode_item_selected(index):

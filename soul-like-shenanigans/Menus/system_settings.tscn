@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://envu7citva8h"]
+[gd_scene load_steps=4 format=3 uid="uid://envu7citva8h"]
 
 [ext_resource type="Script" path="res://Menus/scripts/system_settings.gd" id="1_toewp"]
+[ext_resource type="Script" path="res://Menus/scripts/keybinds_phdr.gd" id="2_ts6p5"]
+[ext_resource type="PackedScene" uid="uid://dqpd0kro067ie" path="res://Menus/keybind menu/input_button.tscn" id="3_bwuc3"]
 
 [node name="System Settings" type="Control"]
 layout_mode = 3
@@ -11,8 +13,89 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_toewp")
 
+[node name="Keybinds" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ts6p5")
+
+[node name="Back" type="Button" parent="Keybinds"]
+layout_mode = 2
+offset_left = 27.0
+offset_top = 940.0
+offset_right = 365.0
+offset_bottom = 1051.0
+theme_override_font_sizes/font_size = 75
+text = "Back"
+
+[node name="Label" type="Label" parent="Keybinds"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -330.0
+offset_right = 330.0
+offset_bottom = 205.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 150
+text = "Keybinds"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reset Button" type="Button" parent="Keybinds"]
+layout_mode = 2
+offset_left = 1548.0
+offset_top = 940.0
+offset_right = 1886.0
+offset_bottom = 1051.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 75
+text = "Reset"
+
+[node name="PanelContainer" type="PanelContainer" parent="Keybinds"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -792.0
+offset_top = -346.0
+offset_right = 792.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Keybinds/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Keybinds/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Keybinds/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionList" type="VBoxContainer" parent="Keybinds/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputButton" parent="Keybinds/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("3_bwuc3")]
+layout_mode = 2
+
 [node name="Audio Settings Container" type="PanelContainer" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -177,9 +260,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -666.0
+offset_left = -795.0
 offset_top = -1013.0
-offset_right = -328.0
+offset_right = -457.0
 offset_bottom = -902.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -188,20 +271,19 @@ text = "Video"
 
 [node name="Audio Settings Button" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -118.0
-offset_top = -1015.0
-offset_right = 220.0
-offset_bottom = -904.0
+offset_left = -109.5
+offset_top = 67.0
+offset_right = 109.5
+offset_bottom = 178.0
 grow_horizontal = 2
-grow_vertical = 0
 theme_override_font_sizes/font_size = 75
 text = "Audio"
 
+[connection signal="pressed" from="Keybinds/Back" to="Keybinds" method="_on_back_pressed"]
+[connection signal="pressed" from="Keybinds/Reset Button" to="Keybinds" method="_on_reset_button_pressed"]
 [connection signal="drag_ended" from="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume" to="." method="_on_main_volume_drag_ended"]
 [connection signal="value_changed" from="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume" to="." method="_on_main_volume_value_changed"]
 [connection signal="drag_ended" from="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume" to="." method="_on_music_volume_drag_ended"]
