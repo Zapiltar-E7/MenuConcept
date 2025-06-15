@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://envu7citva8h"]
+[gd_scene load_steps=6 format=3 uid="uid://envu7citva8h"]
 
 [ext_resource type="Script" path="res://Menus/scripts/system_settings.gd" id="1_toewp"]
 [ext_resource type="Script" path="res://Menus/scripts/keybinds_phdr.gd" id="2_ts6p5"]
 [ext_resource type="PackedScene" uid="uid://dqpd0kro067ie" path="res://Menus/keybind menu/input_button.tscn" id="3_bwuc3"]
+[ext_resource type="Texture2D" uid="uid://be6mj6jk8u4me" path="res://UI Icons/2x/video.png" id="4_sugv8"]
+[ext_resource type="Texture2D" uid="uid://drijyrrx5315i" path="res://UI Icons/2x/audioOn.png" id="5_ufdlk"]
 
 [node name="System Settings" type="Control"]
 layout_mode = 3
@@ -24,15 +26,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_ts6p5")
 
-[node name="Back" type="Button" parent="Keybinds"]
-layout_mode = 2
-offset_left = 27.0
-offset_top = 940.0
-offset_right = 365.0
-offset_bottom = 1051.0
-theme_override_font_sizes/font_size = 75
-text = "Back"
-
 [node name="Label" type="Label" parent="Keybinds"]
 visible = false
 layout_mode = 1
@@ -50,9 +43,9 @@ vertical_alignment = 1
 
 [node name="Reset Button" type="Button" parent="Keybinds"]
 layout_mode = 2
-offset_left = 1548.0
+offset_left = 1415.0
 offset_top = 940.0
-offset_right = 1886.0
+offset_right = 1753.0
 offset_bottom = 1051.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 75
@@ -65,19 +58,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -792.0
+offset_left = -796.0
 offset_top = -346.0
-offset_right = 792.0
+offset_right = 796.0
 offset_bottom = 380.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Keybinds/PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Keybinds/PanelContainer/MarginContainer"]
 layout_mode = 2
@@ -230,9 +223,9 @@ popup/item_2/id = 2
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 0
-offset_left = 27.0
+offset_left = 164.0
 offset_top = 940.0
-offset_right = 365.0
+offset_right = 502.0
 offset_bottom = 1051.0
 theme_override_font_sizes/font_size = 75
 text = "Back"
@@ -253,7 +246,7 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 75
 text = "Keybinds"
 
-[node name="Video Settings Button" type="Button" parent="."]
+[node name="Video Button Text" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -269,20 +262,48 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 75
 text = "Video"
 
-[node name="Audio Settings Button" type="Button" parent="."]
+[node name="Video Button Icon" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -922.0
+offset_top = -878.0
+offset_right = -814.0
+offset_bottom = -770.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 75
+icon = ExtResource("4_sugv8")
+
+[node name="Audio Settings Text" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -109.5
+offset_left = -169.0
 offset_top = 67.0
-offset_right = 109.5
+offset_right = 169.0
 offset_bottom = 178.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 75
 text = "Audio"
 
-[connection signal="pressed" from="Keybinds/Back" to="Keybinds" method="_on_back_pressed"]
+[node name="Audio Settings Icon" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -921.0
+offset_top = 334.0
+offset_right = -813.0
+offset_bottom = 442.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 75
+icon = ExtResource("5_ufdlk")
+
 [connection signal="pressed" from="Keybinds/Reset Button" to="Keybinds" method="_on_reset_button_pressed"]
 [connection signal="drag_ended" from="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume" to="." method="_on_main_volume_drag_ended"]
 [connection signal="value_changed" from="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume" to="." method="_on_main_volume_value_changed"]
@@ -292,5 +313,7 @@ text = "Audio"
 [connection signal="item_selected" from="Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Window Resolution" to="." method="_on_window_resolution_item_selected"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Keybind Button" to="." method="_on_keybinds_pressed"]
-[connection signal="pressed" from="Video Settings Button" to="." method="_on_video_settings_button_pressed"]
-[connection signal="pressed" from="Audio Settings Button" to="." method="_on_audio_settings_button_pressed"]
+[connection signal="pressed" from="Video Button Text" to="." method="_on_video_settings_button_pressed"]
+[connection signal="pressed" from="Video Button Icon" to="." method="_on_video_settings_button_pressed"]
+[connection signal="pressed" from="Audio Settings Text" to="." method="_on_audio_settings_button_pressed"]
+[connection signal="pressed" from="Audio Settings Icon" to="." method="_on_audio_settings_button_pressed"]

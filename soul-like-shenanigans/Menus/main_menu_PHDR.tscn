@@ -1,19 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://6yocw0mwpx13"]
+[gd_scene load_steps=5 format=3 uid="uid://6yocw0mwpx13"]
 
 [ext_resource type="Script" path="res://Menus/scripts/main_menu_phdr.gd" id="1_gpwtt"]
-[ext_resource type="Texture2D" uid="uid://dpauvtthakjdy" path="res://audio/adrien-olichon-RCAhiGJsUUE-unsplash.jpg" id="2_ap1sn"]
 [ext_resource type="PackedScene" uid="uid://envu7citva8h" path="res://Menus/system_settings.tscn" id="2_y70mu"]
 [ext_resource type="PackedScene" uid="uid://d3ula0ymkyvam" path="res://Menus/keybinds.tscn" id="3_kiphy"]
 [ext_resource type="AudioStream" uid="uid://drjbvjkttya7s" path="res://audio/menu music/fatalechoes.mp3" id="5_o2di7"]
-
-[sub_resource type="SystemFont" id="SystemFont_k0n8r"]
-font_names = PackedStringArray("Comic Sans MS")
-
-[sub_resource type="SystemFont" id="SystemFont_elquo"]
-font_names = PackedStringArray("Comic Sans MS")
-
-[sub_resource type="SystemFont" id="SystemFont_0ll33"]
-font_names = PackedStringArray("Comic Sans MS")
 
 [node name="Main Menu UI" type="Control"]
 layout_mode = 3
@@ -24,19 +14,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gpwtt")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2040.0
-offset_top = -1460.0
-offset_right = 2040.0
-offset_bottom = 1460.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_ap1sn")
-
 [node name="Start Screen" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 3
@@ -46,11 +23,17 @@ offset_bottom = 40.0
 
 [node name="Game Title" type="Label" parent="Start Screen"]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_right = 1798.0
-offset_bottom = 394.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 22.0
+offset_top = 120.0
+offset_right = 1860.0
+offset_bottom = 325.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 150
 text = "Placeholder Menu Screen"
 horizontal_alignment = 1
@@ -72,19 +55,16 @@ grow_vertical = 0
 
 [node name="New Game" type="Button" parent="Start Screen/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_k0n8r")
 theme_override_font_sizes/font_size = 75
 text = "New Game"
 
 [node name="Settings Button" type="Button" parent="Start Screen/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_elquo")
 theme_override_font_sizes/font_size = 75
 text = "System Settings"
 
 [node name="Exit" type="Button" parent="Start Screen/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_0ll33")
 theme_override_font_sizes/font_size = 75
 text = "Exit"
 
