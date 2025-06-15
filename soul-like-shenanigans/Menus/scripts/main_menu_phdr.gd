@@ -14,7 +14,7 @@ func _input(event):
 		get_tree().quit()
 		
 func _on_new_game_pressed():
-	get_tree().change_scene_to_file("res://test_level.tscn")
+	pass
 
 
 func _on_system_settings_pressed():

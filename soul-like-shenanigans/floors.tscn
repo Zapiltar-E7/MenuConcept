@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://w2gaw001s7qy"]
-
-[ext_resource type="PackedScene" uid="uid://cq62lpxob8vgk" path="res://floor tileset/floors.glb" id="1_4ge6l"]
-
-[node name="floors" instance=ExtResource("1_4ge6l")]
