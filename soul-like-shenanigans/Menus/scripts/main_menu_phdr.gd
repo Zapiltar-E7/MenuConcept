@@ -10,15 +10,15 @@ func _process(delta):
 	pass
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		get_tree().quit()
+	pass
 		
 func _on_new_game_pressed():
-	get_tree().change_scene_to_file("res://test_level.tscn")
+	pass
 
 
-func _on_system_settings_pressed():
-	get_tree().change_scene_to_file("res://Menus/system_settings.tscn")
+func _on_settings_button_pressed():
+	%"Start Screen".visible = false
+	%"System Settings".visible = true
 
 func _on_exit_pressed():
 	get_tree().quit()

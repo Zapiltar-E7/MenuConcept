@@ -7,4 +7,5 @@
 stream = ExtResource("1_baofa")
 volume_db = -14.991
 bus = &"Music"
+parameters/looping = true
 script = ExtResource("1_mqt5e")

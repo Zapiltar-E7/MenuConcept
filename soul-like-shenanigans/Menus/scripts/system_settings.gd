@@ -19,13 +19,16 @@ func _ready():
 	
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		get_tree().change_scene_to_file("res://Menus/main_menu_PHDR.tscn")
+		%"Start Screen".visible = true
+		%"System Settings".visible = false
 func _on_back_pressed():
-	get_tree().change_scene_to_file("res://Menus/main_menu_PHDR.tscn")
+	%"Start Screen".visible = true
+	%"System Settings".visible = false
 
 
 func _on_keybinds_pressed():
-	get_tree().change_scene_to_file("res://Menus/keybinds.tscn")
+	%"System Settings".visible = false
+	%Keybinds.visible = true
 
 
 func _on_screen_mode_item_selected(index):

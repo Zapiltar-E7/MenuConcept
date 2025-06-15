@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://6yocw0mwpx13"]
+[gd_scene load_steps=8 format=3 uid="uid://6yocw0mwpx13"]
 
 [ext_resource type="Script" path="res://Menus/scripts/main_menu_phdr.gd" id="1_gpwtt"]
+[ext_resource type="Texture2D" uid="uid://c01ek7x4ckffb" path="res://audio/adrien-olichon-RCAhiGJsUUE-unsplash.jpg" id="2_ap1sn"]
+[ext_resource type="PackedScene" uid="uid://envu7citva8h" path="res://Menus/system_settings.tscn" id="2_y70mu"]
+[ext_resource type="PackedScene" uid="uid://d3ula0ymkyvam" path="res://Menus/keybinds.tscn" id="3_kiphy"]
 
 [sub_resource type="SystemFont" id="SystemFont_k0n8r"]
 font_names = PackedStringArray("Comic Sans MS")
@@ -11,7 +14,7 @@ font_names = PackedStringArray("Comic Sans MS")
 [sub_resource type="SystemFont" id="SystemFont_0ll33"]
 font_names = PackedStringArray("Comic Sans MS")
 
-[node name="Main Menu" type="Control"]
+[node name="Main Menu UI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,10 +23,31 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gpwtt")
 
-[node name="Label" type="Label" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2040.0
+offset_top = -1460.0
+offset_right = 2040.0
+offset_bottom = 1460.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ap1sn")
+
+[node name="Start Screen" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Game Title" type="Label" parent="Start Screen"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_right = 1798.0
 offset_bottom = 394.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 150
@@ -31,38 +55,47 @@ text = "Placeholder Menu Screen"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="Start Screen"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -290.0
-offset_top = -587.0
-offset_right = 290.0
-offset_bottom = -131.0
+offset_left = 643.5
+offset_top = 453.0
+offset_right = 1236.5
+offset_bottom = 909.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="New Game" type="Button" parent="VBoxContainer"]
+[node name="New Game" type="Button" parent="Start Screen/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_k0n8r")
 theme_override_font_sizes/font_size = 75
 text = "New Game"
 
-[node name="System Settings" type="Button" parent="VBoxContainer"]
+[node name="Settings Button" type="Button" parent="Start Screen/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_elquo")
 theme_override_font_sizes/font_size = 75
 text = "System Settings"
 
-[node name="Exit" type="Button" parent="VBoxContainer"]
+[node name="Exit" type="Button" parent="Start Screen/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_0ll33")
 theme_override_font_sizes/font_size = 75
 text = "Exit"
 
-[connection signal="pressed" from="VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="VBoxContainer/System Settings" to="." method="_on_system_settings_pressed"]
-[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[node name="System Settings" parent="." instance=ExtResource("2_y70mu")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="Keybinds" parent="." instance=ExtResource("3_kiphy")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Start Screen/VBoxContainer/Settings Button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Start Screen/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

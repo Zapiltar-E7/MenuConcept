@@ -87,8 +87,11 @@ func _input(event):
 			remapping_button = null
 			
 			accept_event()
-	elif event.is_action_pressed("ui_cancel"):
-		get_tree().change_scene_to_file("res://Menus/system_settings.tscn")
+	if !is_remapping:
+		if event.is_action_pressed("ui_cancel"):
+			%Keybinds.visible = false
+			%"System Settings".visible = true
+			
 
 
 func _update_action_list(button, event):
@@ -96,7 +99,9 @@ func _update_action_list(button, event):
 
 
 func _on_back_pressed():
-	get_tree().change_scene_to_file("res://Menus/system_settings.tscn")
+	%Keybinds.visible = false
+	%"System Settings".visible = true
+	
 	
 
 

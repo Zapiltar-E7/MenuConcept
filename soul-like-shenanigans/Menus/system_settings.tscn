@@ -120,7 +120,7 @@ offset_bottom = 1051.0
 theme_override_font_sizes/font_size = 75
 text = "Back"
 
-[node name="Keybinds" type="Button" parent="."]
+[node name="Keybind Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -143,4 +143,4 @@ text = "Keybinds"
 [connection signal="drag_ended" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume" to="." method="_on_music_volume_drag_ended"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume" to="." method="_on_music_volume_value_changed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="Keybinds" to="." method="_on_keybinds_pressed"]
+[connection signal="pressed" from="Keybind Button" to="." method="_on_keybinds_pressed"]
