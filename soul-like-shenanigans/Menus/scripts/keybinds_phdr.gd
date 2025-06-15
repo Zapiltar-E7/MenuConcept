@@ -87,11 +87,7 @@ func _input(event):
 			remapping_button = null
 			
 			accept_event()
-	if !is_remapping:
-		if event.is_action_pressed("ui_cancel"):
-			%Keybinds.visible = false
-			%"System Settings".visible = true
-			
+
 
 
 func _update_action_list(button, event):
@@ -101,8 +97,6 @@ func _update_action_list(button, event):
 func _on_back_pressed():
 	%Keybinds.visible = false
 	%"System Settings".visible = true
-	
-	
 
 
 func _on_reset_button_pressed():

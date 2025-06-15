@@ -17,14 +17,17 @@ func _ready():
 	main_volume_slider.value = audio_settings.main_volume
 	music_volume_slider.value = audio_settings.music_volume
 	
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		%"Start Screen".visible = true
-		%"System Settings".visible = false
 func _on_back_pressed():
 	%"Start Screen".visible = true
 	%"System Settings".visible = false
 
+func _on_video_settings_button_pressed():
+	%"Video Settings Container".visible = true
+	%"Audio Settings Container".visible = false
+
+func _on_audio_settings_button_pressed():
+	%"Video Settings Container".visible = false
+	%"Audio Settings Container".visible = true
 
 func _on_keybinds_pressed():
 	%"System Settings".visible = false
@@ -72,6 +75,8 @@ func _on_music_volume_drag_ended(value_changed):
 
 func _on_main_volume_value_changed(value):
 	AudioServer.set_bus_volume_db(master, linear_to_db(value))
+	print("Master", AudioServer.get_bus_volume_db(master))
 
 func _on_music_volume_value_changed(value):
 	AudioServer.set_bus_volume_db(music, linear_to_db(value))
+	print("Music:", AudioServer.get_bus_volume_db(music))

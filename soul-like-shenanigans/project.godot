@@ -24,7 +24,7 @@ run/use_filter=false
 [autoload]
 
 ConfigFileHandler="*res://Menus/scripts/ConfigFileHandler.gd"
-MenuMusic="*res://Menus/scripts/menu_music.gd"
+MenuMusic="res://Menus/scripts/menu_music.gd"
 
 [display]
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://6yocw0mwpx13"]
+[gd_scene load_steps=9 format=3 uid="uid://6yocw0mwpx13"]
 
 [ext_resource type="Script" path="res://Menus/scripts/main_menu_phdr.gd" id="1_gpwtt"]
 [ext_resource type="Texture2D" uid="uid://dpauvtthakjdy" path="res://audio/adrien-olichon-RCAhiGJsUUE-unsplash.jpg" id="2_ap1sn"]
 [ext_resource type="PackedScene" uid="uid://envu7citva8h" path="res://Menus/system_settings.tscn" id="2_y70mu"]
 [ext_resource type="PackedScene" uid="uid://d3ula0ymkyvam" path="res://Menus/keybinds.tscn" id="3_kiphy"]
+[ext_resource type="AudioStream" uid="uid://drjbvjkttya7s" path="res://audio/menu music/fatalechoes.mp3" id="5_o2di7"]
 
 [sub_resource type="SystemFont" id="SystemFont_k0n8r"]
 font_names = PackedStringArray("Comic Sans MS")
@@ -96,6 +97,12 @@ layout_mode = 1
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_o2di7")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [connection signal="pressed" from="Start Screen/VBoxContainer/Settings Button" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Start Screen/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
