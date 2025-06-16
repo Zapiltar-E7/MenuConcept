@@ -19,13 +19,13 @@ func _ready():
 		config.set_value("keybinding", "cast_spell", "Q")
 		config.set_value("keybinding", "player_interact", "E")
 		config.set_value("keybinding", "inventory", "Tab")
-		config.set_value("keybinding", "pause", "Esc")
+		config.set_value("keybinding", "pause", "Escape")
 		
 		config.set_value("video", "fullscreen", 0)
 		config.set_value("video", "resolution", 0)
 		
 		config.set_value("audio", "main_volume", 0.5)
-		config.set_value("audio", "music_volume", 0.75)
+		config.set_value("audio", "music_volume", 0.75) 
 		
 		config.save(SETTINGS_FILE_PATH)
 	else:
