@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://envu7citva8h"]
+[gd_scene load_steps=8 format=3 uid="uid://envu7citva8h"]
 
 [ext_resource type="Script" path="res://Menus/scripts/system_settings.gd" id="1_toewp"]
 [ext_resource type="Script" path="res://Menus/scripts/keybinds_phdr.gd" id="2_ts6p5"]
 [ext_resource type="PackedScene" uid="uid://dqpd0kro067ie" path="res://Menus/keybind menu/input_button.tscn" id="3_bwuc3"]
-[ext_resource type="Texture2D" path="res://UI Icons/2x/video.png" id="4_sugv8"]
-[ext_resource type="Texture2D" path="res://UI Icons/2x/star.png" id="4_t50b6"]
-[ext_resource type="Texture2D" path="res://UI Icons/2x/audioOn.png" id="5_ufdlk"]
+[ext_resource type="Texture2D" uid="uid://cs3eodgk6vpnb" path="res://UI Icons/2x/cross.png" id="4_mcwhj"]
+[ext_resource type="Texture2D" uid="uid://be6mj6jk8u4me" path="res://UI Icons/2x/video.png" id="4_sugv8"]
+[ext_resource type="Texture2D" uid="uid://btsfcuktvj3hb" path="res://UI Icons/2x/star.png" id="4_t50b6"]
+[ext_resource type="Texture2D" uid="uid://drijyrrx5315i" path="res://UI Icons/2x/audioOn.png" id="5_ufdlk"]
 
 [node name="System Settings" type="Control"]
 layout_mode = 3
@@ -222,7 +223,13 @@ popup/item_1/id = 1
 popup/item_2/text = "640x480"
 popup/item_2/id = 2
 
+[node name="CheckBox" type="CheckBox" parent="Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Minimal UI"
+
 [node name="Back" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 164.0
 offset_top = 940.0
@@ -230,6 +237,15 @@ offset_right = 502.0
 offset_bottom = 1051.0
 theme_override_font_sizes/font_size = 75
 text = "Back"
+
+[node name="Back Icon" type="Button" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 810.0
+offset_right = 148.0
+offset_bottom = 918.0
+theme_override_font_sizes/font_size = 75
+icon = ExtResource("4_mcwhj")
 
 [node name="Keybind Button Text" type="Button" parent="."]
 visible = false
@@ -332,6 +348,7 @@ icon = ExtResource("5_ufdlk")
 [connection signal="item_selected" from="Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Screen Mode" to="." method="_on_screen_mode_item_selected"]
 [connection signal="item_selected" from="Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Window Resolution" to="." method="_on_window_resolution_item_selected"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Back Icon" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Keybind Button Text" to="." method="_on_keybinds_pressed"]
 [connection signal="pressed" from="Keybind Button Icon" to="." method="_on_keybinds_pressed"]
 [connection signal="pressed" from="Video Button Text" to="." method="_on_video_settings_button_pressed"]
