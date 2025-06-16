@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://envu7citva8h"]
+[gd_scene load_steps=7 format=3 uid="uid://envu7citva8h"]
 
 [ext_resource type="Script" path="res://Menus/scripts/system_settings.gd" id="1_toewp"]
+[ext_resource type="Script" path="res://Menus/scripts/keybinds_phdr.gd" id="2_ts6p5"]
+[ext_resource type="PackedScene" uid="uid://dqpd0kro067ie" path="res://Menus/keybind menu/input_button.tscn" id="3_bwuc3"]
+[ext_resource type="Texture2D" path="res://UI Icons/2x/video.png" id="4_sugv8"]
+[ext_resource type="Texture2D" path="res://UI Icons/2x/star.png" id="4_t50b6"]
+[ext_resource type="Texture2D" path="res://UI Icons/2x/audioOn.png" id="5_ufdlk"]
 
 [node name="System Settings" type="Control"]
 layout_mode = 3
@@ -11,46 +16,189 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_toewp")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="Keybinds" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ts6p5")
+
+[node name="Label" type="Label" parent="Keybinds"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -330.0
+offset_right = 330.0
+offset_bottom = 205.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 150
+text = "Keybinds"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reset Button" type="Button" parent="Keybinds"]
+layout_mode = 2
+offset_left = 1415.0
+offset_top = 940.0
+offset_right = 1753.0
+offset_bottom = 1051.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 75
+text = "Reset"
+
+[node name="PanelContainer" type="PanelContainer" parent="Keybinds"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -531.0
-offset_top = -486.0
-offset_right = 875.0
-offset_bottom = 476.0
+offset_left = -796.0
+offset_top = -346.0
+offset_right = 796.0
+offset_bottom = 380.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Keybinds/PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Keybinds/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Keybinds/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="ActionList" type="VBoxContainer" parent="Keybinds/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Video Settings" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="InputButton" parent="Keybinds/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("3_bwuc3")]
+layout_mode = 2
+
+[node name="Audio Settings Container" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -796.0
+offset_top = -349.0
+offset_right = 796.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Audio Settings Container"]
+layout_mode = 2
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 250
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Audio Settings Container/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Audio Settings Container/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Audio Settings" type="Label" parent="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Audio Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Main Volume" type="Label" parent="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 35
+text = "Main Volume"
+
+[node name="MainVolume" type="HSlider" parent="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="Music Volume" type="Label" parent="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 35
+text = "Music Volume"
+
+[node name="MusicVolume" type="HSlider" parent="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 0.75
+
+[node name="Video Settings Container" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -796.0
+offset_top = -349.0
+offset_right = 796.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Video Settings Container"]
+layout_mode = 2
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 250
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Video Settings Container/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Video Settings Container/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Video Settings" type="Label" parent="Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Video Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Screen Mode" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Screen Mode" type="OptionButton" parent="Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 alignment = 1
@@ -62,7 +210,7 @@ popup/item_1/id = 1
 popup/item_2/text = "Borderless Fullscreen"
 popup/item_2/id = 2
 
-[node name="Window Resolution" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Window Resolution" type="OptionButton" parent="Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 alignment = 1
@@ -74,73 +222,119 @@ popup/item_1/id = 1
 popup/item_2/text = "640x480"
 popup/item_2/id = 2
 
-[node name="Audio Settings" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Audio Settings"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Main Volume" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 7
-theme_override_font_sizes/font_size = 35
-text = "Main Volume"
-
-[node name="MainVolume" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-max_value = 1.0
-step = 0.001
-value = 0.5
-
-[node name="Music Volume" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 7
-theme_override_font_sizes/font_size = 35
-text = "Music Volume"
-
-[node name="MusicVolume" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-max_value = 1.0
-step = 0.001
-value = 0.75
-
 [node name="Back" type="Button" parent="."]
 layout_mode = 0
-offset_left = 27.0
+offset_left = 164.0
 offset_top = 940.0
-offset_right = 365.0
+offset_right = 502.0
 offset_bottom = 1051.0
 theme_override_font_sizes/font_size = 75
 text = "Back"
 
-[node name="Keybinds" type="Button" parent="."]
+[node name="Keybind Button Text" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -933.0
-offset_top = -266.0
-offset_right = -595.0
-offset_bottom = -155.0
+offset_left = 457.0
+offset_top = -1013.0
+offset_right = 795.0
+offset_bottom = -902.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 75
 text = "Keybinds"
 
-[connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Screen Mode" to="." method="_on_screen_mode_item_selected"]
-[connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Window Resolution" to="." method="_on_window_resolution_item_selected"]
-[connection signal="drag_ended" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume" to="." method="_on_main_volume_drag_ended"]
-[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume" to="." method="_on_main_volume_value_changed"]
-[connection signal="drag_ended" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume" to="." method="_on_music_volume_drag_ended"]
-[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume" to="." method="_on_music_volume_value_changed"]
+[node name="Keybind Button Icon" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -919.0
+offset_top = -615.0
+offset_right = -811.0
+offset_bottom = -507.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 75
+icon = ExtResource("4_t50b6")
+
+[node name="Video Button Text" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -795.0
+offset_top = -1013.0
+offset_right = -457.0
+offset_bottom = -902.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 75
+text = "Video"
+
+[node name="Video Button Icon" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -922.0
+offset_top = -878.0
+offset_right = -814.0
+offset_bottom = -770.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 75
+icon = ExtResource("4_sugv8")
+
+[node name="Audio Settings Text" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -169.0
+offset_top = 67.0
+offset_right = 169.0
+offset_bottom = 178.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 75
+text = "Audio"
+
+[node name="Audio Settings Icon" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -921.0
+offset_top = 334.0
+offset_right = -813.0
+offset_bottom = 442.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 75
+icon = ExtResource("5_ufdlk")
+
+[connection signal="pressed" from="Keybinds/Reset Button" to="Keybinds" method="_on_reset_button_pressed"]
+[connection signal="drag_ended" from="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume" to="." method="_on_main_volume_drag_ended"]
+[connection signal="value_changed" from="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume" to="." method="_on_main_volume_value_changed"]
+[connection signal="drag_ended" from="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume" to="." method="_on_music_volume_drag_ended"]
+[connection signal="value_changed" from="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume" to="." method="_on_music_volume_value_changed"]
+[connection signal="item_selected" from="Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Screen Mode" to="." method="_on_screen_mode_item_selected"]
+[connection signal="item_selected" from="Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Window Resolution" to="." method="_on_window_resolution_item_selected"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="Keybinds" to="." method="_on_keybinds_pressed"]
+[connection signal="pressed" from="Keybind Button Text" to="." method="_on_keybinds_pressed"]
+[connection signal="pressed" from="Keybind Button Icon" to="." method="_on_keybinds_pressed"]
+[connection signal="pressed" from="Video Button Text" to="." method="_on_video_settings_button_pressed"]
+[connection signal="pressed" from="Video Button Icon" to="." method="_on_video_settings_button_pressed"]
+[connection signal="pressed" from="Audio Settings Text" to="." method="_on_audio_settings_button_pressed"]
+[connection signal="pressed" from="Audio Settings Icon" to="." method="_on_audio_settings_button_pressed"]

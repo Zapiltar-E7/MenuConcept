@@ -1,10 +1,10 @@
 extends Control
 
 
-@onready var fullscreen_mode = $"PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Screen Mode"
-@onready var window_resolution = $"PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Window Resolution"
-@onready var main_volume_slider = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume
-@onready var music_volume_slider = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume
+@onready var fullscreen_mode = $"Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Screen Mode"
+@onready var window_resolution = $"Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Window Resolution"
+@onready var main_volume_slider = $"Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume"
+@onready var music_volume_slider = $"Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume"
 var master = AudioServer.get_bus_index("Master")
 var music = AudioServer.get_bus_index("Music")
 
@@ -19,13 +19,27 @@ func _ready():
 	
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		get_tree().change_scene_to_file("res://Menus/main_menu_PHDR.tscn")
+		%"System Settings".visible = false
+		%"Start Screen".visible = true
+	
 func _on_back_pressed():
-	get_tree().change_scene_to_file("res://Menus/main_menu_PHDR.tscn")
+	%"Start Screen".visible = true
+	%"System Settings".visible = false
 
+func _on_video_settings_button_pressed():
+	%"Video Settings Container".visible = true
+	%"Audio Settings Container".visible = false
+	%Keybinds.visible = false
+
+func _on_audio_settings_button_pressed():
+	%"Video Settings Container".visible = false
+	%"Audio Settings Container".visible = true
+	%Keybinds.visible = false
 
 func _on_keybinds_pressed():
-	get_tree().change_scene_to_file("res://Menus/keybinds.tscn")
+	%Keybinds.visible = true
+	%"Video Settings Container".visible = false
+	%"Audio Settings Container".visible = false
 
 
 func _on_screen_mode_item_selected(index):
@@ -69,6 +83,8 @@ func _on_music_volume_drag_ended(value_changed):
 
 func _on_main_volume_value_changed(value):
 	AudioServer.set_bus_volume_db(master, linear_to_db(value))
+	print("Master", AudioServer.get_bus_volume_db(master))
 
 func _on_music_volume_value_changed(value):
 	AudioServer.set_bus_volume_db(music, linear_to_db(value))
+	print("Music:", AudioServer.get_bus_volume_db(music))
