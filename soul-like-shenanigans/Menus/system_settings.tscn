@@ -90,7 +90,6 @@ layout_mode = 2
 
 [node name="Audio Settings Container" type="PanelContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -159,8 +158,24 @@ max_value = 1.0
 step = 0.001
 value = 0.75
 
+[node name="SFX Volume" type="Label" parent="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 35
+text = "SFX Volume"
+
+[node name="SFXVolume" type="HSlider" parent="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 0.75
+
 [node name="Video Settings Container" type="PanelContainer" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -345,6 +360,8 @@ icon = ExtResource("5_ufdlk")
 [connection signal="value_changed" from="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume" to="." method="_on_main_volume_value_changed"]
 [connection signal="drag_ended" from="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume" to="." method="_on_music_volume_drag_ended"]
 [connection signal="value_changed" from="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume" to="." method="_on_music_volume_value_changed"]
+[connection signal="drag_ended" from="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SFXVolume" to="." method="_on_sfx_volume_drag_ended"]
+[connection signal="value_changed" from="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SFXVolume" to="." method="_on_sfx_volume_value_changed"]
 [connection signal="item_selected" from="Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Screen Mode" to="." method="_on_screen_mode_item_selected"]
 [connection signal="item_selected" from="Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Window Resolution" to="." method="_on_window_resolution_item_selected"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

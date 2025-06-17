@@ -95,11 +95,13 @@ func _update_action_list(button, event):
 
 
 func _on_back_pressed():
+	%"Button SFX".play()
 	%Keybinds.visible = false
 	%"System Settings".visible = true
 
 
 func _on_reset_button_pressed():
+	%"Button SFX".play()
 	InputMap.load_from_project_settings()
 	for action in input_actions:
 		var events = InputMap.action_get_events(action)

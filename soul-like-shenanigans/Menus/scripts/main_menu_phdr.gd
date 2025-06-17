@@ -13,10 +13,11 @@ func _input(event):
 	pass
 		
 func _on_new_game_pressed():
-	pass
+	%"Button SFX".play()
 
 
 func _on_settings_button_pressed():
+	%"Button SFX".play()
 	%"Start Screen".visible = false
 	%"System Settings".visible = true
 

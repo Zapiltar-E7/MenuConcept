@@ -5,8 +5,11 @@ extends Control
 @onready var window_resolution = $"Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Window Resolution"
 @onready var main_volume_slider = $"Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume"
 @onready var music_volume_slider = $"Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume"
+@onready var sfx_volume_slider = $"Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SFXVolume"
+
 var master = AudioServer.get_bus_index("Master")
 var music = AudioServer.get_bus_index("Music")
+var sfx = AudioServer.get_bus_index("SFX")
 
 func _ready():
 	var video_settings = ConfigFileHandler.load_video_setting()
@@ -16,6 +19,7 @@ func _ready():
 	var audio_settings = ConfigFileHandler.load_audio_setting()
 	main_volume_slider.value = audio_settings.main_volume
 	music_volume_slider.value = audio_settings.music_volume
+	sfx_volume_slider.value = audio_settings.sfx_volume
 	
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -23,20 +27,24 @@ func _input(event):
 		%"Start Screen".visible = true
 	
 func _on_back_pressed():
+	%"Button SFX".play()
 	%"Start Screen".visible = true
 	%"System Settings".visible = false
 
 func _on_video_settings_button_pressed():
+	%"Button SFX".play()
 	%"Video Settings Container".visible = true
 	%"Audio Settings Container".visible = false
 	%Keybinds.visible = false
 
 func _on_audio_settings_button_pressed():
+	%"Button SFX".play()
 	%"Video Settings Container".visible = false
 	%"Audio Settings Container".visible = true
 	%Keybinds.visible = false
 
 func _on_keybinds_pressed():
+	%"Button SFX".play()
 	%Keybinds.visible = true
 	%"Video Settings Container".visible = false
 	%"Audio Settings Container".visible = false
@@ -79,7 +87,9 @@ func _on_music_volume_drag_ended(value_changed):
 	if value_changed:
 		ConfigFileHandler.save_audio_setting("music_volume", music_volume_slider.value)
 
-
+func _on_sfx_volume_drag_ended(value_changed):
+	if value_changed:
+		ConfigFileHandler.save_audio_setting("sfx_volume", sfx_volume_slider.value)
 
 func _on_main_volume_value_changed(value):
 	AudioServer.set_bus_volume_db(master, linear_to_db(value))
@@ -88,3 +98,8 @@ func _on_main_volume_value_changed(value):
 func _on_music_volume_value_changed(value):
 	AudioServer.set_bus_volume_db(music, linear_to_db(value))
 	print("Music:", AudioServer.get_bus_volume_db(music))
+
+
+func _on_sfx_volume_value_changed(value):
+	AudioServer.set_bus_volume_db(sfx, linear_to_db(value))
+	print("SFX:", AudioServer.get_bus_volume_db(sfx))
