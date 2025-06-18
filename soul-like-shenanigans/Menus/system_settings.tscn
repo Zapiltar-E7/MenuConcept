@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://envu7citva8h"]
+[gd_scene load_steps=9 format=3 uid="uid://envu7citva8h"]
 
 [ext_resource type="Script" path="res://Menus/scripts/system_settings.gd" id="1_toewp"]
 [ext_resource type="Script" path="res://Menus/scripts/keybinds_phdr.gd" id="2_ts6p5"]
@@ -8,8 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://be6mj6jk8u4me" path="res://UI Icons/2x/video.png" id="4_sugv8"]
 [ext_resource type="Texture2D" uid="uid://btsfcuktvj3hb" path="res://UI Icons/2x/star.png" id="4_t50b6"]
 [ext_resource type="Texture2D" uid="uid://drijyrrx5315i" path="res://UI Icons/2x/audioOn.png" id="5_ufdlk"]
-[ext_resource type="Texture2D" uid="uid://vefxosdi14mr" path="res://UI Icons/UI Assets/tab pressed.png" id="6_g76vt"]
-[ext_resource type="Texture2D" uid="uid://byi3662eorgpw" path="res://UI Icons/UI Assets/tab unpressed.png" id="7_myttf"]
 
 [node name="System Settings" type="Control"]
 layout_mode = 3
@@ -253,7 +251,6 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="Back" type="Button" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 164.0
 offset_top = 940.0
@@ -263,6 +260,7 @@ theme_override_font_sizes/font_size = 75
 text = "Back"
 
 [node name="Back Icon" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 40.0
 offset_top = 810.0
@@ -271,56 +269,7 @@ offset_bottom = 918.0
 theme_override_font_sizes/font_size = 75
 icon = ExtResource("4_mcwhj")
 
-[node name="Keybind Button Text" type="Button" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 457.0
-offset_top = -1013.0
-offset_right = 795.0
-offset_bottom = -902.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 75
-text = "Keybinds"
-
-[node name="Keybind Button Icon" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -919.0
-offset_top = -615.0
-offset_right = -811.0
-offset_bottom = -507.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 75
-icon = ExtResource("4_t50b6")
-
-[node name="KeybindTextured" type="TextureButton" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 8.0
-offset_top = 191.0
-offset_right = 164.0
-offset_bottom = 347.0
-toggle_mode = true
-texture_normal = ExtResource("6_g76vt")
-texture_pressed = ExtResource("7_myttf")
-texture_hover = ExtResource("7_myttf")
-texture_focused = ExtResource("7_myttf")
-ignore_texture_size = true
-stretch_mode = 0
-
 [node name="Video Button Text" type="Button" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -337,6 +286,7 @@ theme_override_font_sizes/font_size = 75
 text = "Video"
 
 [node name="Video Button Icon" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -352,23 +302,7 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 75
 icon = ExtResource("4_sugv8")
 
-[node name="VideoTextured" type="TextureButton" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 8.0
-offset_top = 503.0
-offset_right = 164.0
-offset_bottom = 659.0
-toggle_mode = true
-texture_normal = ExtResource("6_g76vt")
-texture_pressed = ExtResource("7_myttf")
-texture_hover = ExtResource("7_myttf")
-texture_focused = ExtResource("7_myttf")
-ignore_texture_size = true
-stretch_mode = 0
-
 [node name="Audio Settings Text" type="Button" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -382,6 +316,7 @@ theme_override_font_sizes/font_size = 75
 text = "Audio"
 
 [node name="Audio Settings Icon" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -394,23 +329,42 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 75
 icon = ExtResource("5_ufdlk")
 
-[node name="AudioTextured" type="TextureButton" parent="."]
+[node name="Keybind Button Text" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 457.0
+offset_top = -1013.0
+offset_right = 795.0
+offset_bottom = -902.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 75
+text = "Keybinds"
+
+[node name="Keybind Button Icon" type="Button" parent="."]
 visible = false
-layout_mode = 0
-offset_left = 8.0
-offset_top = 347.0
-offset_right = 164.0
-offset_bottom = 503.0
-toggle_mode = true
-texture_normal = ExtResource("6_g76vt")
-texture_pressed = ExtResource("7_myttf")
-texture_hover = ExtResource("7_myttf")
-texture_focused = ExtResource("7_myttf")
-ignore_texture_size = true
-stretch_mode = 0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -919.0
+offset_top = -615.0
+offset_right = -811.0
+offset_bottom = -507.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 75
+icon = ExtResource("4_t50b6")
 
 [connection signal="item_selected" from="Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Screen Mode" to="." method="_on_screen_mode_item_selected"]
 [connection signal="item_selected" from="Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Window Resolution" to="." method="_on_window_resolution_item_selected"]
+[connection signal="toggled" from="Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="drag_ended" from="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume" to="." method="_on_main_volume_drag_ended"]
 [connection signal="value_changed" from="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume" to="." method="_on_main_volume_value_changed"]
 [connection signal="drag_ended" from="Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume" to="." method="_on_music_volume_drag_ended"]
@@ -420,9 +374,9 @@ stretch_mode = 0
 [connection signal="pressed" from="Keybinds/Reset Button" to="Keybinds" method="_on_reset_button_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Back Icon" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="Keybind Button Text" to="." method="_on_keybinds_pressed"]
-[connection signal="pressed" from="Keybind Button Icon" to="." method="_on_keybinds_pressed"]
 [connection signal="pressed" from="Video Button Text" to="." method="_on_video_settings_button_pressed"]
 [connection signal="pressed" from="Video Button Icon" to="." method="_on_video_settings_button_pressed"]
 [connection signal="pressed" from="Audio Settings Text" to="." method="_on_audio_settings_button_pressed"]
 [connection signal="pressed" from="Audio Settings Icon" to="." method="_on_audio_settings_button_pressed"]
+[connection signal="pressed" from="Keybind Button Text" to="." method="_on_keybinds_pressed"]
+[connection signal="pressed" from="Keybind Button Icon" to="." method="_on_keybinds_pressed"]

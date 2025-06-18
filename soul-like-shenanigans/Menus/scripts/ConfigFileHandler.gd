@@ -23,6 +23,7 @@ func _ready():
 		
 		config.set_value("video", "fullscreen", 0)
 		config.set_value("video", "resolution", 0)
+		config.set_value("video", "ui_mode", 0)
 		
 		config.set_value("audio", "main_volume", 0.5)
 		config.set_value("audio", "music_volume", 0.75) 

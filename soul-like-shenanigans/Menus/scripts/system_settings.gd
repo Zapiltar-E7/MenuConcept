@@ -1,11 +1,29 @@
 extends Control
 
-
+#Video Settings
 @onready var fullscreen_mode = $"Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Screen Mode"
 @onready var window_resolution = $"Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Window Resolution"
+@onready var ui_mode = $"Video Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CheckBox"
+
+#Audio Settings
 @onready var main_volume_slider = $"Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainVolume"
 @onready var music_volume_slider = $"Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicVolume"
 @onready var sfx_volume_slider = $"Audio Settings Container/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SFXVolume"
+
+
+#UI Toggles
+@onready var back_txt = $Back
+@onready var back_icon = $"Back Icon"
+@onready var video_text = $"Video Button Text"
+@onready var video_icon = $"Video Button Icon"
+@onready var audio_text = $"Audio Settings Text"
+@onready var audio_icon = $"Audio Settings Icon"
+@onready var keybind_text = $"Keybind Button Text"
+@onready var keybind_icon = $"Keybind Button Icon"
+
+#All Text Buttons
+@onready var txt_buttons = [back_txt, video_text, audio_text, keybind_text]
+@onready var icon_buttons = [back_icon, video_icon, audio_icon, keybind_icon]
 
 var master = AudioServer.get_bus_index("Master")
 var music = AudioServer.get_bus_index("Music")
@@ -15,6 +33,7 @@ func _ready():
 	var video_settings = ConfigFileHandler.load_video_setting()
 	fullscreen_mode.selected = video_settings.fullscreen
 	window_resolution.selected = video_settings.resolution
+	ui_mode.button_pressed = video_settings.ui_mode
 	
 	var audio_settings = ConfigFileHandler.load_audio_setting()
 	main_volume_slider.value = audio_settings.main_volume
@@ -76,7 +95,19 @@ func _on_window_resolution_item_selected(index):
 			DisplayServer.window_set_size(Vector2i(640, 480))
 			ConfigFileHandler.save_video_setting("resolution", 2)
 
-
+func _on_check_box_toggled(toggled_on):
+	if toggled_on == true:
+		ConfigFileHandler.save_video_setting("ui_mode", true)
+		for button in txt_buttons:
+			button.visible = false
+		for button in icon_buttons:
+			button.visible = true
+	else:
+		ConfigFileHandler.save_video_setting("ui_mode", false)
+		for button in txt_buttons:
+			button.visible = true
+		for button in icon_buttons:
+			button.visible = false
 
 func _on_main_volume_drag_ended(value_changed):
 	if value_changed:
